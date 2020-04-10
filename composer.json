@@ -1,0 +1,18 @@
+{
+    "name": "marlin/start",
+    "description": "marlin course for beginers",
+    "license": "XXX",
+    "authors": [
+        {
+            "name": "Serj Andreyuk",
+            "email": "rasev108@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Services\\": "services",
+            "App\\": "app"
+        }
+    }
+}
