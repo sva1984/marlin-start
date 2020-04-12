@@ -1,4 +1,4 @@
 # marlin-start
-Learn php
-Create php projext for beginers
-https://marlindev.ru/school/courses/php/lessons
+<p> Learn php 
+<p>Create php project for beginners
+<p>https://marlindev.ru/school/courses/php/lessons

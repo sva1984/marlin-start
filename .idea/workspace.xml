@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a8a621c-7c40-4c98-9d8b-f13f33ba4aeb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/LogOutService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/marlin-start.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/marlin-start.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/oldHtml/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/LoginService.php" beforeDir="false" afterPath="$PROJECT_DIR$/store/LoginService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/createCommentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/store/createCommentService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/createUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/store/createUserService.php" afterDir="false" />
-    </list>
+    <list default="true" id="8a8a621c-7c40-4c98-9d8b-f13f33ba4aeb" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +68,7 @@
       <file leaf-file-name="LogOutService.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/store/LogOutService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="34">
               <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
@@ -252,12 +240,12 @@
       <workItem from="1586416898316" duration="1764000" />
       <workItem from="1586519973736" duration="5148000" />
       <workItem from="1586623622319" duration="1657000" />
-      <workItem from="1586691244150" duration="3904000" />
+      <workItem from="1586691244150" duration="4230000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73009000" />
+    <option name="totallyTimeSpent" value="73335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -271,7 +259,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.16336633" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.830033" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -626,7 +614,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/store/LogOutService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="34">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
