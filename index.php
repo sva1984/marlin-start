@@ -47,12 +47,24 @@ function errorMessage($flagName, $text)
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                           <?php
+//                           print_r($_SESSION); die;
+                           if(isset($_SESSION['name'])){
+                               echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile.php">' . $_SESSION['name'] . '</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="store/LogOutService.php">Logout</a>
+                            </li>';
+                           } else echo '
                             <li class="nav-item">
                                 <a class="nav-link" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="register.php">Register</a>
-                            </li>
+                            </li>';
+                            ?>
                     </ul>
                 </div>
             </div>
@@ -113,7 +125,7 @@ function errorMessage($flagName, $text)
                                     <label for="exampleFormControlTextarea1">Имя</label>
                                     <input name="name" class="form-control" id="exampleFormControlTextarea1" />
                                         <?php
-                                        errorMessage('name', 'Введите имя !!!!');
+                                        errorMessage('emptyName', 'Введите имя !!!!');
                                         ?>
                                   </div>
                                   <div class="form-group">

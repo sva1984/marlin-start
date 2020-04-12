@@ -44,12 +44,22 @@ function errorMessage($flagName)
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.php">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="register.php">Register</a>
-                            </li>
+                        if(isset($_SESSION['name'])){
+                        echo '
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.php">' . $_SESSION['name'] . '</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="store/LogOutService.php">Logout</a>
+                        </li>';
+                        } else echo '
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.php">Register</a>
+                        </li>';
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -69,7 +79,7 @@ function errorMessage($flagName)
                                         <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                                             <div class="col-md-6">
                                                 <input id="name" type="text" class="form-control " name="name" >
-                                             <?php errorMessage('name'); ?>
+                                             <?php errorMessage('emptyName'); ?>
                                             </div>
                                         </div>
 

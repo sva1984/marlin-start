@@ -4,7 +4,7 @@ session_start();
 
 $pdoRepository = new PdoRepository();
 $pdo = $pdoRepository->getPdo();
-$sql = "SELECT id, email, password FROM `user` WHERE email = '" . $_POST['email'] . "'";
+$sql = "SELECT * FROM `user` WHERE email = '" . $_POST['email'] . "'";
 $statment = $pdo->prepare($sql);
 $statment->execute();
 $record = $statment->fetch(PDO::FETCH_ASSOC);
@@ -38,14 +38,18 @@ if(!$passwordVerify) {
 if($passwordVerify){
     $_SESSION['id'] = $record['id'];
     $_SESSION['email'] = $record['email'];
+    $_SESSION['name'] = $record['name'];
     if(isset($_POST['remember']) && $_POST['remember'] == 'on'){
         $ttl = time()+3600*24;
         setcookie('email', $record['email'], $ttl);
         setcookie('password', $record['password'], $ttl);
+        setcookie('name', $record['name'], $ttl);
+
     }
     if(isset($_POST['remember']) && $_POST['remember'] != 'on'){
         setcookie('email', $record['email'], time()-3600);
         setcookie('password', $record['password'], time()-3600);
+        setcookie('name', $record['name'], time()-3600);
     }
 }
 

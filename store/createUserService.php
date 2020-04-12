@@ -6,7 +6,7 @@ session_start();
 
 
 if(empty($_POST['name'])) {
-    $_SESSION['name'] = 'ALARM!!! It can not be empty';
+    $_SESSION['emptyName'] = 'ALARM!!! It can not be empty';
     header('Location: /register.php');
     die;
 }

@@ -4,7 +4,7 @@ include "PdoRepository.php";
 session_start();
 
 if(empty($_POST['name'])){
-    $_SESSION['name'] = 'Yuooo Hoooo';
+    $_SESSION['emptyName'] = 'Yuooo Hoooo';
     header('Location: /index.php');
     die;
 }
