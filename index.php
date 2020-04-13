@@ -102,10 +102,14 @@ function errorMessage($flagName, $text)
                                 }
                                 $pdoRepository = new PdoRepository();
                                 $pdo = $pdoRepository->getPdo();
-                                $sql = "SELECT * FROM comment ORDER BY id DESC";
+                                $sql = "SELECT comment.id, comment.comment, comment.date, `user`.name
+                                        FROM comment
+                                        JOIN user ON comment.id_user = user.id
+                                        ORDER BY comment.id DESC";
                                 $statment = $pdo->prepare($sql);
                                 $statment->execute();
                                 $comments = $statment->fetchAll(PDO::FETCH_ASSOC);
+//                                print_r($comments); die;
                                 foreach ($comments as $comment){
                                     $commentDate = date('d/m/Y', $comment['date']);
                                     comment($comment['name'], $comment['comment'], $commentDate);
@@ -121,21 +125,21 @@ function errorMessage($flagName, $text)
 
                             <div class="card-body">
                                 <form action="store/createCommentService.php" method="post">
-                                    <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Имя</label>
-                                    <input name="name" class="form-control" id="exampleFormControlTextarea1" />
-                                        <?php
-                                        errorMessage('emptyName', 'Введите имя !!!!');
-                                        ?>
-                                  </div>
-                                  <div class="form-group">
+                                    <?php
+                                    if(isset($_SESSION['name']))
+                                    echo '
+                                     <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Сообщение</label>
-                                    <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                      <?php
-                                      errorMessage('text', 'Введите комментарий !!!!');
-                                      ?>
-                                  </div>
-                                  <button type="submit" class="btn btn-success">Отправить</button>
+                                    <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>' .
+                                      errorMessage('text', 'Введите комментарий !!!!') .
+                            '</div>
+                            <button type="submit" class="btn btn-success">Отправить</button>';
+                                    else echo '<div class=\"card-body\">
+                                              <div class=\"alert alert-success\" role=\"alert\">
+                                                <h5 style=\'color:#15791E\'>Для добавления комментария необходимо авторизоваться</h5>
+                                              </div>';
+                                    ?>
+
                                </form>
                             </div>
                         </div>

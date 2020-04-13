@@ -1,3 +1,17 @@
+<?php
+session_start();
+if(isset($_SESSION['success'])) {
+    header('Refresh:3; url=http://marlin-start/profile.php');
+}
+
+function errorMessage($flagName, $text)
+{
+    if(isset($_SESSION[$flagName])){
+        echo "<h1 style='color:#ff0419'>$text</h1>";
+        unset($_SESSION[$flagName]);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +31,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="oldHtml/index.html">
+                <a class="navbar-brand" href="index.php">
                     Project
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +48,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="oldHtml/login.html">Login</a>
+                                <a class="nav-link" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="oldHtml/register.html">Register</a>
@@ -52,25 +66,26 @@
                         <div class="card-header"><h3>Профиль пользователя</h3></div>
 
                         <div class="card-body">
-                          <div class="alert alert-success" role="alert">
-                            Профиль успешно обновлен
-                          </div>
-
+<!--                          <div class="alert alert-success" role="alert">-->
+<!--                            Профиль успешно обновлен-->
+<!--                          </div>-->
+                            <?php echo $_SESSION['name']?>
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Name</label>
-                                            <input type="text" class="form-control" name="name" id="exampleFormControlInput1" value="John">
+                                            <input type="text" class="form-control" name="name" id="exampleFormControlInput1" value=<?php echo $_SESSION['name']?>>
                                            
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Email</label>
-                                            <input type="email" class="form-control is-invalid" name="email" id="exampleFormControlInput1" value="john@example.com">
-                                            <span class="text text-danger">
-                                                Ошибка валидации
-                                            </span>
+                                            <input type="email" class="form-control" name="email" id="exampleFormControlInput1" value=<?php echo $_SESSION['email']?>>
+<!--                                            <input type="email" class="form-control is-invalid" name="email" id="exampleFormControlInput1" value=--><?php //echo $_SESSION['email']?><!-->-->
+<!--                                            <span class="text text-danger">-->
+<!--                                                Ошибка валидации-->
+<!--                                            </span>-->
                                         </div>
 
                                         <div class="form-group">
