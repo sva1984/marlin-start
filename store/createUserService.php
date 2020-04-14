@@ -3,8 +3,6 @@ include "PdoRepository.php";
 
 session_start();
 
-
-
 if(empty($_POST['name'])) {
     $_SESSION['emptyName'] = 'ALARM!!! It can not be empty';
     header('Location: /register.php');

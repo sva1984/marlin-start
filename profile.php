@@ -4,10 +4,10 @@ if(isset($_SESSION['success'])) {
     header('Refresh:3; url=http://marlin-start/profile.php');
 }
 
-function errorMessage($flagName, $text)
+function errorMessage($flagName)
 {
     if(isset($_SESSION[$flagName])){
-        echo "<h1 style='color:#ff0419'>$text</h1>";
+        echo "<h5 style='color:#ff0419'>$_SESSION[$flagName]</h5>";
         unset($_SESSION[$flagName]);
     }
 }
@@ -47,12 +47,23 @@ function errorMessage($flagName, $text)
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <?php
+                        if(isset($_SESSION['name'])){
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile.php">' . $_SESSION['name'] . '</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="store/LogOutService.php">Logout</a>
+                            </li>';
+                        } else echo '
                             <li class="nav-item">
                                 <a class="nav-link" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="oldHtml/register.html">Register</a>
-                            </li>
+                                <a class="nav-link" href="register.php">Register</a>
+                            </li>';
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -69,13 +80,12 @@ function errorMessage($flagName, $text)
 <!--                          <div class="alert alert-success" role="alert">-->
 <!--                            Профиль успешно обновлен-->
 <!--                          </div>-->
-                            <?php echo $_SESSION['name']?>
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="store/ProfileService.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Name</label>
-                                            <input type="text" class="form-control" name="name" id="exampleFormControlInput1" value=<?php echo $_SESSION['name']?>>
+                                            <input type="text" class="form-control" name="name" id="exampleFormControlInput1" value="<?php echo $_SESSION['name']?>">
                                            
                                         </div>
 
@@ -86,6 +96,7 @@ function errorMessage($flagName, $text)
 <!--                                            <span class="text text-danger">-->
 <!--                                                Ошибка валидации-->
 <!--                                            </span>-->
+                                            <?php errorMessage('err_email');?>
                                         </div>
 
                                         <div class="form-group">
@@ -94,7 +105,12 @@ function errorMessage($flagName, $text)
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <img src="img/no-user.jpg" alt="" class="img-fluid">
+                                        <?php
+                                        if(!empty($_SESSION['img_url'])){
+                                            echo '<img src="img/' . $_SESSION['img_url'] . '" alt="" class="img-fluid">';
+                                        }else echo '<img src="img/no-user.jpg" alt="" class="img-fluid">';
+                                        ?>
+
                                     </div>
 
                                     <div class="col-md-12">

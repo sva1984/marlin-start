@@ -39,6 +39,7 @@ if($passwordVerify){
     $_SESSION['id'] = $record['id'];
     $_SESSION['email'] = $record['email'];
     $_SESSION['name'] = $record['name'];
+    $_SESSION['img_url'] = $record['img_url'];
     if(isset($_POST['remember']) && $_POST['remember'] == 'on'){
         $ttl = time()+3600*24;
         setcookie('email', $record['email'], $ttl);

@@ -48,7 +48,6 @@ function errorMessage($flagName, $text)
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                            <?php
-//                           print_r($_SESSION); die;
                            if(isset($_SESSION['name'])){
                                echo '
                             <li class="nav-item">
@@ -88,11 +87,16 @@ function errorMessage($flagName, $text)
                                               </div>';
                                     unset($_SESSION['success']);
                                 }
-
-                                function comment($user, $comment, $date)
+                                function img($img)
+                                {
+                                    if(!empty($img)){
+                                        return $img;
+                                    }else return 'no-user.jpg';
+                                }
+                                function comment($user, $comment, $img, $date)
                                 {
                                    echo "<div class='media'>
-                                              <img src='img/no-user.jpg' class='mr-3' alt=''...' width='64' height='64'>
+                                              <img src='img/" . img($img) . "' class='mr-3' alt=''...' width='64' height='64'>
                                               <div class='media-body''>
                                                 <h5 class='mt-0'>$user</h5> 
                                                 <span><small>$date</small></span>
@@ -102,17 +106,18 @@ function errorMessage($flagName, $text)
                                 }
                                 $pdoRepository = new PdoRepository();
                                 $pdo = $pdoRepository->getPdo();
-                                $sql = "SELECT comment.id, comment.comment, comment.date, `user`.name
+                                $sql = "SELECT comment.id, comment.comment, comment.date, `user`.name, `user`.img_url
                                         FROM comment
                                         JOIN user ON comment.id_user = user.id
                                         ORDER BY comment.id DESC";
                                 $statment = $pdo->prepare($sql);
                                 $statment->execute();
                                 $comments = $statment->fetchAll(PDO::FETCH_ASSOC);
+//                                echo "<pre>";
 //                                print_r($comments); die;
                                 foreach ($comments as $comment){
                                     $commentDate = date('d/m/Y', $comment['date']);
-                                    comment($comment['name'], $comment['comment'], $commentDate);
+                                    comment($comment['name'], $comment['comment'], $comment['img_url'], $commentDate);
                                 }
                                 ?>
                             </div>
