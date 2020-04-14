@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['success'])) {
+if(isset($_SESSION['success']) || isset($_SESSION['success_pass'])) {
     header('Refresh:3; url=http://marlin-start/profile.php');
 }
 
@@ -77,9 +77,11 @@ function errorMessage($flagName)
                         <div class="card-header"><h3>Профиль пользователя</h3></div>
 
                         <div class="card-body">
-<!--                          <div class="alert alert-success" role="alert">-->
-<!--                            Профиль успешно обновлен-->
-<!--                          </div>-->
+                                 <?php if(isset($_SESSION['success']))
+                                    echo '<div class="alert alert-success" role="alert">
+                                            Профиль успешно обновлен
+                                           </div>';
+                                    unset($_SESSION['success'])?>
                             <form action="store/ProfileService.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-8">
@@ -92,10 +94,6 @@ function errorMessage($flagName)
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Email</label>
                                             <input type="email" class="form-control" name="email" id="exampleFormControlInput1" value=<?php echo $_SESSION['email']?>>
-<!--                                            <input type="email" class="form-control is-invalid" name="email" id="exampleFormControlInput1" value=--><?php //echo $_SESSION['email']?><!-->-->
-<!--                                            <span class="text text-danger">-->
-<!--                                                Ошибка валидации-->
-<!--                                            </span>-->
                                             <?php errorMessage('err_email');?>
                                         </div>
 
@@ -125,23 +123,28 @@ function errorMessage($flagName)
                 <div class="col-md-12" style="margin-top: 20px;">
                     <div class="card">
                         <div class="card-header"><h3>Безопасность</h3></div>
-
-                        <div class="card-body">
-                            <div class="alert alert-success" role="alert">
+                         <div class="card-body">
+                        <?php if(isset($_SESSION['success_pass']))
+                        echo '<div class="alert alert-success" role="alert">
                                 Пароль успешно обновлен
-                            </div>
+                            </div>';
+                        unset($_SESSION['success_pass']);
+                            ?>
 
-                            <form action="/profile/password" method="post">
+
+                            <form action="store/ChangePasswordService.php" method="post">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Current password</label>
                                             <input type="password" name="current" class="form-control" id="exampleFormControlInput1">
+                                            <?php errorMessage('err_pass_virify');?>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">New password</label>
                                             <input type="password" name="password" class="form-control" id="exampleFormControlInput1">
+                                            <?php errorMessage('err_confirm_pass');?>
                                         </div>
 
                                         <div class="form-group">

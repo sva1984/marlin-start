@@ -44,7 +44,7 @@ function errorMessage($flagName)
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        if(isset($_SESSION['name'])){
+                        <?php if(isset($_SESSION['name'])){
                         echo '
                         <li class="nav-item">
                             <a class="nav-link" href="profile.php">' . $_SESSION['name'] . '</a>

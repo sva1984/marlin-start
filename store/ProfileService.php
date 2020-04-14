@@ -28,5 +28,5 @@ $statment = $pdo->prepare($sql);
 $statment->execute();
 $_SESSION['name'] = $_POST['name'];
 $_SESSION['email'] = $_POST['email'];
-
+$_SESSION['success'] = true;
 header('Location: /profile.php');
